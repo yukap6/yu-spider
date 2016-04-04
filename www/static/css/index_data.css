@@ -1,0 +1,26 @@
+.com_right_content {
+  padding: 20px 0;
+}
+.com_right_content .sort .sort_line {
+  padding: 10px 0;
+}
+.com_right_content .sort .sort_line .sort_label {
+  height: 34px;
+  line-height: 34px;
+  font-size: 1.4rem;
+  text-indent: 20px;
+  font-weight: 700;
+}
+.com_right_content .data_container {
+  background-color: #fff;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 2px;
+}
+.com_right_content .data_container .echarts_container {
+  width: 600px;
+  height: 400px;
+}
+.com_right_content .data_container .data_table .table_sort_header {
+  font-size: 1.6rem;
+}

@@ -110,7 +110,7 @@ export default class extends Base {
     }
 
     testAction() {
-        let currentdir = "./www/shophtml/ksports"
+        let currentdir = "./www/shophtml/ksports";
         if(!fs.existsSync(currentdir+"/spidered")){
             fs.mkdirSync(currentdir+"/spidered", "07777");
         }
@@ -118,5 +118,32 @@ export default class extends Base {
         let writerStream = fs.createWriteStream(currentdir+"/spidered/1.html");
         readerStream.pipe(writerStream);
         this.end("test success");
+    }
+
+    reactAction() {
+        return this.display();
+    }
+
+    dataAction() {
+        return this.display();
+    }
+
+    async sortinitAction() {
+        let model = this.model("item");
+        let stores = await model.field("item_store").group("item_store").select();
+        let result = {"data":stores, "code":"10000"};
+        this.end(result);
+    }
+
+    async getalldataAction() {
+        let model = this.model("item");
+        let item_store = this.post("item_store");
+        let item_datebegin = this.post("item_datebegin");
+        let item_dateend = this.post("item_dateend");
+
+        let chartsData = await model.field("sum(item_count) as num, item_title").where("item_store = '"+item_store+"' and item_datebegin >= '"+item_datebegin+"' and item_dateend <= '"+item_dateend+"'").group("item_tag").order("num desc").limit(10).select();
+        let tableData = await model.field("sum(item_count) as num, sum(item_total) as total, item_title, item_img, item_tag").where("item_store = '"+item_store+"' and item_datebegin >= '"+item_datebegin+"' and item_dateend <= '"+item_dateend+"'").group("item_tag").order("num desc").limit(50).select();
+        let result = {"chartsData":chartsData, "tableData":tableData, "code":"10000"};
+        this.end(result);
     }
 }

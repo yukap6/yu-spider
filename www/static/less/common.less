@@ -1,0 +1,120 @@
+@color: #FED100;
+@baseColor: #646464;
+
+html,body{
+    font-size:62.5%;
+    font-family:"Microsoft YaHei";
+    color:@baseColor;
+}
+
+/*common left and header begin*/
+.com_container_row{
+    .com_left_menu {
+        background-color: #292c30;
+        color: #fff;
+        bottom: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding:0px;
+        .com_logo {
+            height: 110px;
+            line-height: 110px;
+            font-size: 1.8rem;
+            text-align:center;
+            color:@color;
+            .big_words {
+                font-size: 4rem;
+            }
+        }
+        .menu_first {
+            height: 60px;
+            padding: 15px;
+            line-height: 30px;
+            color:#c0bead;
+            cursor:pointer;
+            i{
+                line-height:30px;
+            }
+            h4{
+                padding-left:10px;
+                margin-top:7px;
+            }
+        }
+        .menu_first:hover{
+            background-color:#303336;
+        }
+        .menu_active .menu_first{
+            background-color:#f4f6f9;
+            color:#000;
+        }
+        .sub_menu{
+            background-color:#23262a;
+        }
+        .sub_menu{
+            padding:10px 0;
+            li{
+                padding: 10px 15px 10px 50px;
+                color: #68685e;
+                display: block;
+                font-size: 1.4rem;
+                font-weight: 600;
+                cursor:pointer;
+            }
+            li:hover{
+                color: #ccc;
+            }
+            .sub_active{
+                color: @color;
+            }
+            .sub_active:hover{
+                color: @color;
+            }
+        }
+    }
+    .com_right_box {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding:0px;
+        background-color:#f4f6f9;
+        .com_right_header {
+            background-color: #fff;
+            height: 70px;
+            line-height: 70px;
+            padding: 0 15px;
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+            .com_header_block_des {
+                font-size: 1.6rem;
+            }
+            .com_rh_user {
+                .com_header_menu{
+                    height:30px;
+                    line-height: 30px;
+                    margin:15px 0;
+                }
+            }
+        }
+    }
+}
+/*common left and header end*/
+
+/*common interrupt tips  begin*/
+.com_no_interrupt_tips_com {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: 60px;
+    line-height: 28px;
+    text-align:center;
+    font-size:1.4rem;
+    .close{
+        top:4px;
+    }
+}
+/*common interrupt tips  end*/
