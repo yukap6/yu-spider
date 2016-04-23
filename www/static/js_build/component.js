@@ -345,11 +345,6 @@ var DataContentSort = React.createClass({
                                 ),
                                 React.createElement(
                                     "option",
-                                    { value: "2015-04-01/2015-04-30" },
-                                    "2015/04"
-                                ),
-                                React.createElement(
-                                    "option",
                                     { value: "2015-05-01/2015-05-31" },
                                     "2015/05"
                                 ),
@@ -402,6 +397,11 @@ var DataContentSort = React.createClass({
                                     "option",
                                     { value: "2016-03-01/2016-03-31" },
                                     "2016/03"
+                                ),
+                                React.createElement(
+                                    "option",
+                                    { value: "2016-04-01/2016-04-30" },
+                                    "2016/04"
                                 )
                             )
                         ),

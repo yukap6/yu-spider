@@ -203,7 +203,6 @@ var DataContentSort = React.createClass({
                             <span className="col-sm-3">
                                 <select  name="quick_month" className="form-control">
                                     <option value="">--按月快速定位--</option>
-                                    <option value="2015-04-01/2015-04-30">2015/04</option>
                                     <option value="2015-05-01/2015-05-31">2015/05</option>
                                     <option value="2015-06-01/2015-06-30">2015/06</option>
                                     <option value="2015-07-01/2015-07-31">2015/07</option>
@@ -215,6 +214,7 @@ var DataContentSort = React.createClass({
                                     <option value="2016-01-01/2016-01-31">2016/01</option>
                                     <option value="2016-02-01/2016-02-29">2016/02</option>
                                     <option value="2016-03-01/2016-03-31">2016/03</option>
+                                    <option value="2016-04-01/2016-04-30">2016/04</option>
                                 </select>
                             </span>
                             <span className="col-sm-3">

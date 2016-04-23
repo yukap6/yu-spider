@@ -44,7 +44,7 @@ export default class extends Base {
                             trDatas[i]["item_serialnum"] = td.text();
                             break;
                         case 2:
-                            trDatas[i]["item_title"] = $(td.find("a")[0]).text().replace(/[\s|\n|\r|\n\r|\r\n]+/g, " ");
+                            trDatas[i]["item_title"] = $(td.find("a")[0]).text().replace(/[\s|\n|\r|\n\r|\r\n]+/g, " ").replace(/\'/g, "").replace(/\"/g, "\"");
                             break;
                         case 3:
                             trDatas[i]["item_total"] = td.text().replace("$", "").replace(/,/g, "");
@@ -99,7 +99,7 @@ export default class extends Base {
                 if (stat.isDirectory()) {
                     let htmls = fs.readdirSync(currentStore);
                     htmls.forEach(function (hfile) {
-                        if (hfile.substr(-5, 5) == ".html") {
+                        if (hfile.substr(-4, 4) == ".htm" || hfile.substr(-5, 5) == ".html") {
                             $this.getdata(storename, currentStore, hfile);
                         }
                     });
@@ -141,9 +141,10 @@ export default class extends Base {
         let item_datebegin = this.post("item_datebegin");
         let item_dateend = this.post("item_dateend");
 
-        let chartsData = await model.field("sum(item_count) as num, item_title").where("item_store = '"+item_store+"' and item_datebegin >= '"+item_datebegin+"' and item_dateend <= '"+item_dateend+"'").group("item_tag").order("num desc").limit(10).select();
-        let tableData = await model.field("sum(item_count) as num, sum(item_total) as total, item_title, item_img, item_tag").where("item_store = '"+item_store+"' and item_datebegin >= '"+item_datebegin+"' and item_dateend <= '"+item_dateend+"'").group("item_tag").order("num desc").limit(50).select();
+        let chartsData = await model.field("sum(item_count) as num, sum(item_total) as total, item_title").where("item_store = '"+item_store+"' and item_datebegin >= '"+item_datebegin+"' and item_dateend <= '"+item_dateend+"'").group("item_tag").order("total desc").limit(10).select();
+        let tableData = await model.field("sum(item_count) as num, sum(item_total) as total, item_title, item_img, item_tag").where("item_store = '"+item_store+"' and item_datebegin >= '"+item_datebegin+"' and item_dateend <= '"+item_dateend+"'").group("item_tag").order("total desc").limit(50).select();
         let result = {"chartsData":chartsData, "tableData":tableData, "code":"10000"};
         this.end(result);
     }
 }
+
